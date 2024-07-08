@@ -143,9 +143,9 @@ void qp_finish(FILE *fout, Ptr<RdmaQueuePair> q) {
                                         // required (with header but no INT)
   uint64_t standalone_fct = base_rtt + total_bytes * 8000000000lu / b;
   // sip, dip, sport, dport, size (B), start_time, fct (ns), standalone_fct (ns)
-  fprintf(fout, "%08x %08x %u %u %lu %lu %lu %lu\n", q->sip.Get(), q->dip.Get(),
+  fprintf(fout, "%08x %08x %u %u %lu %lu %lu %lu %lu\n", q->sip.Get(), q->dip.Get(),
           q->sport, q->dport, q->m_size, q->startTime.GetTimeStep(),
-          (Simulator::Now() - q->startTime).GetTimeStep(), standalone_fct);
+          (Simulator::Now() - q->startTime).GetTimeStep(), standalone_fct, q->m_max_rate.GetBitRate() / 1000000000UL);
   fflush(fout);
 
   // std::cout << " " << sid << " " << did << " " << q->sport << " " << q->dport

@@ -1095,6 +1095,14 @@ CollectivePhase Sys::generate_collective_phase(
   if (collective_implementation->type == CollectiveImplementationType::Ring ||
       collective_implementation->type ==
           CollectiveImplementationType::OneRing) {
+    std::cout << boostedTick()
+              << " generate_collective_phase(id=" << id
+              << ",type=" << (int)collective_type 
+              << ",layer=" << layer_num
+              << ",size=" << data_size
+              << ",topo={.n_nodes_in_dim=" << ((RingTopology*)topology)->get_nodes_in_ring()
+              << ",.offset=" << ((RingTopology*)topology)->offset 
+              << "})" << std::endl;
     CollectivePhase vn(
         this,
         queue_id,
@@ -1112,6 +1120,14 @@ CollectivePhase Sys::generate_collective_phase(
       collective_implementation->type == CollectiveImplementationType::Direct ||
       collective_implementation->type ==
           CollectiveImplementationType::OneDirect) {
+    std::cout << boostedTick()
+              << " generate_collective_phase(id=" << id
+              << ",type=" << (int)collective_type 
+              << ",layer=" << layer_num
+              << ",size=" << data_size
+              << ",topo={.n_nodes_in_dim=" << ((RingTopology*)topology)->get_nodes_in_ring()
+              << ",.offset=" << ((RingTopology*)topology)->offset 
+              << "})" << std::endl;
     CollectivePhase vn(
         this,
         queue_id,
@@ -1130,6 +1146,13 @@ CollectivePhase Sys::generate_collective_phase(
   } else if (
       collective_implementation->type ==
       CollectiveImplementationType::DoubleBinaryTree) {
+    std::cout << boostedTick()
+              << " generate_collective_phase(id=" << id
+              << ",type=" << (int)collective_type 
+              << ",layer=" << layer_num
+              << ",size=" << data_size
+              << ",topo={.n_nodes_in_dim=" << ((BinaryTree*)topology)->get_num_of_nodes_in_dimension(0)
+              << "})" << std::endl;
     CollectivePhase vn(
         this,
         queue_id,
@@ -1141,6 +1164,14 @@ CollectivePhase Sys::generate_collective_phase(
           CollectiveImplementationType::HalvingDoubling ||
       collective_implementation->type ==
           CollectiveImplementationType::OneHalvingDoubling) {
+    std::cout << boostedTick()
+              << " generate_collective_phase(id=" << id
+              << ",type=" << (int)collective_type 
+              << ",layer=" << layer_num
+              << ",size=" << data_size
+              << ",topo={.n_nodes_in_dim=" << ((RingTopology*)topology)->get_nodes_in_ring()
+              << ",.offset=" << ((RingTopology*)topology)->offset 
+              << "})" << std::endl;
     CollectivePhase vn(
         this,
         queue_id,
